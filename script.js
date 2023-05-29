@@ -54,13 +54,24 @@ class Obstacle {
     this.game = game
     this.colX = Math.random() * this.game.width
     this.colY = Math.random() * this.game.height
-    this.colRadius = 80
+    this.colRadius = 40
+    this.image = document.querySelector(".obstacles")
+    this.spriteWidth = 250
+    this.spriteHeight = 250
+    this.width = this.spriteWidth
+    this.height = this.spriteHeight
+    this.spriteX = this.colX - this.width * 0.5
+    this.spriteY = this.colY - this.height * 0.5 - 70
   }
 
   draw(context) {
+    context.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight, this.spriteX, this.spriteY, this.width, this.height)
     context.beginPath();
     context.arc(this.colX,this.colY,this.colRadius,0,Math.PI * 2);
+    context.save()
+    context.globalAlpha = 0.5
     context.fill();
+    context.restore()
   }
 }
 

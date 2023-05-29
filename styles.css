@@ -2,12 +2,26 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
   background: #262626;
 }
 
-#canvas {
-  background: #fff;
+#canvas,
+.overlay{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
+#canvas {
+  background: url("./assets/background.png");
+}
+
+.overlay {
+  pointer-events: none;
+}
+
+.obstacles {
+  display: none;
+}
+
