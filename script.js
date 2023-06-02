@@ -80,6 +80,7 @@ class Game {
     this.canvas = canvas;
     this.width = canvas.width;
     this.height = canvas.height;
+    this.topMargin = 100
     this.player = new Player(this);
     this.numOfObstacle = 10
     this.obstacle = []
@@ -129,14 +130,15 @@ class Game {
         const dy = testObstacle.colY - ob.colY
 
         const distance = Math.hypot(dy, dx)
-        const sumOfRadii = testObstacle.colRadius + ob.colRadius
+        const distanceBuffer = 150
+        const sumOfRadii = testObstacle.colRadius + ob.colRadius + distanceBuffer
 
         if(distance < sumOfRadii) {
           overlap = true
         }
       })
       // this.obstacle.push(new Obstacle(this))
-      if(!overlap) {
+      if(!overlap && testObstacle.spriteX > 0 && testObstacle.spriteX < this.width - testObstacle.width && testObstacle.spriteY > this.topMargin && testObstacle.spriteY < this.height - testObstacle.height ) {
         this.obstacle.push(testObstacle)
       }
       attempts++
